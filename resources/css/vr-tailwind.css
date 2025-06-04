@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom VR page styles */
+.vr-root,
+.vr-root * {
+    color: white !important;
+    font-weight: 400 !important;
+    font-family: "Inter", sans-serif !important;
+}
+
+.glass {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 1.5rem; /* rounded-3xl */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
