@@ -86,7 +86,11 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                         label="Learn More"
                                         type="button"
                                         className="mr-3 p-button-raised"
-                                        onClick={() => router.visit("/landing")}
+                                        onClick={() =>
+                                            router.visit("/landing", {
+                                                preserveState: false,
+                                            })
+                                        }
                                     />
                                     <Button
                                         label="Explore Now"
@@ -94,7 +98,8 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                         className="p-button-outlined"
                                         onClick={() =>
                                             router.visit(
-                                                "/landing/travelverse-dashboard"
+                                                "/landing/travelverse-dashboard",
+                                                { preserveState: false }
                                             )
                                         }
                                     />

@@ -64,6 +64,7 @@ const AppTopbar = forwardRef((props, ref) => {
                 <Link
                     href={route("profile.edit")}
                     className="p-link layout-topbar-button"
+                    preserveState={false}
                 >
                     <i className="pi pi-user"></i>
                     <span>Profile</span>
@@ -73,6 +74,7 @@ const AppTopbar = forwardRef((props, ref) => {
                     method="post"
                     as="button"
                     className="p-link layout-topbar-button"
+                    preserveState={false}
                 >
                     <i className="pi pi-lock"></i>
                     <span>Logout</span>
