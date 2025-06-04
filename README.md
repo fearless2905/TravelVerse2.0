@@ -17,11 +17,11 @@ LaraReact Dashboard Template is aimed at Laravel developers who want to kickstar
 
 ## Getting Started
 
-To get started with LaraReact Dashboard Template first clone the [LaraReact Dashboard Template](https://github.com/boadusamuel/laravel-inertia-react) repository.
+To get started with LaraReact Dashboard Template first clone the [LaraReact Dashboard Template](https://github.com/fearless2905/TravelVerse2.0.git) repository.
 
 **Clone Repository:**
    ```bash
-   git clone https://github.com/boadusamuel/laravel-inertia-react
+   git clone https://github.com/fearless2905/TravelVerse2.0.git
    ```
 
 ## Frontend
