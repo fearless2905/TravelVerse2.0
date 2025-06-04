@@ -1,0 +1,105 @@
+#chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#chatbot-toggle {
+    background-color: #25d366;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+#chatbot-toggle span {
+    font-size: 32px;
+    color: white;
+}
+
+#chatbot {
+    display: none;
+    width: 380px;
+    height: 520px;
+    background: #1e1e2f; /* gelap seperti WhatsApp */
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+#chatbot-header {
+    background: #202c33;
+    color: #e4e6eb;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 14px;
+    text-align: center;
+    border-bottom: 1px solid #2a3942;
+}
+
+#chatbot-messages {
+    flex: 1;
+    padding: 12px;
+    overflow-y: auto;
+    font-size: 15px;
+    color: #e4e6eb;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Chat bubble untuk pengguna */
+.user-message {
+    align-self: flex-end;
+    background: #25d366;
+    color: black;
+    padding: 10px 14px;
+    border-radius: 18px 18px 0 18px;
+    max-width: 75%;
+}
+
+/* Chat bubble untuk bot */
+.bot-message {
+    align-self: flex-start;
+    background: #2a3942;
+    color: #e4e6eb;
+    padding: 10px 14px;
+    border-radius: 18px 18px 18px 0;
+    max-width: 75%;
+}
+
+#chatbot-form {
+    display: flex;
+    border-top: 1px solid #2a3942;
+    background: #202c33;
+}
+
+#chatbot-input {
+    flex: 1;
+    border: none;
+    padding: 14px;
+    font-size: 15px;
+    background: transparent;
+    color: white;
+    outline: none;
+}
+
+#chatbot-input::placeholder {
+    color: #999;
+}
+
+#chatbot-form button {
+    background-color: #25d366;
+    border: none;
+    padding: 0 18px;
+    cursor: pointer;
+    font-size: 16px;
+    color: white;
+    border-left: 1px solid #2a3942;
+}
