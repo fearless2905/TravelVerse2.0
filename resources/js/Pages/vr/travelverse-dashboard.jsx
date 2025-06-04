@@ -8,21 +8,27 @@ import AllTours from "./AllTours";
 import MapLocations from "./MapLocations";
 import Categories from "./Categories";
 import Footer from "./Footer";
+import Chatbot from "../../Components/Chatbot";
+
+import { usePage } from "@inertiajs/react";
 
 const TravelverseDashboard = () => {
+    const { url } = usePage();
+
     return (
         <div
             className="bg-cover bg-center min-h-screen text-white"
             style={{ backgroundImage: "url('/images/hero/banyuwangi1.jpg')" }}
         >
             <div className="min-h-screen bg-black bg-opacity-60 flex flex-col font-[Inter] vr-root">
-                <Header />
+                <Header key={url} />
                 {/* <HeroSection /> */}
                 <FeaturedDestinations />
                 <AllTours />
                 <MapLocations />
                 <Categories />
-                <Footer />
+                <Footer key={url} />
+                <Chatbot key={url} />
             </div>
         </div>
     );

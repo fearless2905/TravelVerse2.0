@@ -15,8 +15,13 @@ import SectionHero from "./SectionHero";
 import SectionWelcome from "./SectionWelcome";
 import SectionExperience from "./SectionExperience";
 import SectionSlider from "./SectionSlider";
+import Chatbot from "../../Components/Chatbot";
+
+import { usePage } from "@inertiajs/react";
 
 export default function LandingPage() {
+    const { url } = usePage();
+
     useEffect(() => {
         AOS.init({
             duration: 800,
@@ -28,14 +33,15 @@ export default function LandingPage() {
 
     return (
         <>
-            <Header />
-            <main>
+            <Header key={url} />
+            <main key={url}>
                 <SectionHero />
                 <SectionWelcome />
                 <SectionExperience />
                 <SectionSlider />
             </main>
-            <Footer />
+            <Footer key={url} />
+            <Chatbot key={url} />
         </>
     );
 }
