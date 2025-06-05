@@ -24,7 +24,7 @@ class ChatController extends Controller
                     'X-Title' => 'SiteName',
                 ],
                 'json' => [
-                    'model' => 'deepseek/deepseek-r1:free',
+                    'model' => 'deepseek/deepseek-chat:free',
                     'messages' => $messages,
                 ],
             ]);
