@@ -4,10 +4,11 @@ const destinations = [
     {
         img: "/images/hero/pantai.jpg",
         title: "Tropical Paradise Beach",
-        desc: "Kecamatan Pesanggaran, Sumberagung ",
+        desc: "Kecamatan Pesanggaran, Sumberagung",
         category: "Beach",
         description:
             "A beautiful tropical beach with crystal clear waters and white sand, perfect for relaxation and water activities.",
+        vrPath: "/vr/pantai/index.html", // Path untuk Beach
     },
     {
         img: "/images/hero/kerbau.jpg",
@@ -16,38 +17,7 @@ const destinations = [
         category: "Mountain",
         description:
             "Explore scenic mountain trails offering breathtaking views and exciting hiking experiences.",
-    },
-    {
-        img: "/images/hero/patung.jpg",
-        title: "Historic Cityscape",
-        desc: "Banyuwangi",
-        category: "City",
-        description:
-            "Discover the rich history and culture of the city through its iconic landmarks and architecture.",
-    },
-    {
-        img: "/images/hero/pulaumerah.jpg",
-        title: "Pantai Pulau Merah",
-        desc: "Banyuwangi",
-        category: "Beach",
-        description:
-            "Famous for its red sand and stunning sunsets, this beach is a must-visit for nature lovers.",
-    },
-    {
-        img: "/images/hero/ijen.jpg",
-        title: "Kawah Ijen",
-        desc: "Banyuwangi",
-        category: "Volcano",
-        description:
-            "Witness the mesmerizing blue flames and sulfur mining activities at this active volcano.",
-    },
-    {
-        img: "/images/hero/banyuwangi1.jpg",
-        title: "Hutan Taman Nasional Baluran",
-        desc: "Banyuwangi",
-        category: "Forest",
-        description:
-            "Experience diverse wildlife and lush greenery in this expansive national park.",
+        vrPath: "/vr/pantai2/index.html", // Path untuk Mountain
     },
 ];
 
@@ -125,26 +95,30 @@ const FeaturedDestinations = () => {
                             {selectedDestination.description}
                         </p>
                         <div className="flex justify-end gap-4">
-    <button
-        className="no-underline border border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-4 py-2 rounded-full transition-colors duration-300"
-        onClick={closeModal}
-    >
-        Close
-    </button>
-    <button
-        className="no-underline border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-4 py-2 rounded-full transition-colors duration-300"
-        onClick={() => alert("Booking clicked!")}
-    >
-        Booking
-    </button>
-    <button
-        className="no-underline border border-green-600 text-green-600 hover:bg-green-600 hover:text-white px-4 py-2 rounded-full transition-colors duration-300"
-        onClick={() => alert("Start Tour clicked!")}
-    >
-        Start Tour
-    </button>
-</div>
-
+                            <button
+                                className="no-underline border border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-4 py-2 rounded-full transition-colors duration-300"
+                                onClick={closeModal}
+                            >
+                                Close
+                            </button>
+                            <button
+                                className="no-underline border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-4 py-2 rounded-full transition-colors duration-300"
+                                onClick={() => alert("Booking clicked!")}
+                            >
+                                Booking
+                            </button>
+                            <button
+                                className="no-underline border border-green-600 text-green-600 hover:bg-green-600 hover:text-white px-4 py-2 rounded-full transition-colors duration-300"
+                                onClick={() =>
+                                    window.open(
+                                        selectedDestination.vrPath,
+                                        "_blank"
+                                    )
+                                }
+                            >
+                                Start Tour
+                            </button>
+                        </div>
                     </div>
                 </div>
             )}
