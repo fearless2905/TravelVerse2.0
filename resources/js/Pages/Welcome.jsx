@@ -1,20 +1,10 @@
 import { Link, Head, router } from "@inertiajs/react";
-import {
-    LayoutContext,
-    LayoutProvider,
-} from "@/Layouts/layout/context/layoutcontext.jsx";
+import { LayoutContext, LayoutProvider } from "@/Layouts/layout/context/layoutcontext.jsx";
 import { PrimeReactProvider } from "primereact/api";
 import { Button } from "primereact/button";
 import React, { useContext, useEffect } from "react";
 
 export default function Welcome({ auth, laravelVersion, phpVersion }) {
-    const { layoutConfig } = useContext(LayoutContext);
-
-    useEffect(() => {
-        // Force reflow or reset styles on mount to fix layout issues on navigation back
-        window.dispatchEvent(new Event("resize"));
-    }, []);
-
     return (
         <>
             <PrimeReactProvider>
@@ -60,30 +50,23 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                             </div>
                         </div>
 
-                        <div className="grid grid-nogutter surface-0 text-800">
+                        <div className="flex surface-0 text-800 min-h-screen">
                             <div
-                                className="col-12 md:col-6 p-6 text-center md:text-left flex align-items-center"
-                                style={{ marginRight: "50%" }}
+                                className="flex-1 p-6 text-left flex align-items-center justify-start"
                             >
                                 <section>
-                                    <span className="block text-6xl font-bold mb-1">
-                                        Welcome to TravelVerse
+                                    <span className="block text-6xl font-bold mb-1 text-gray-900 dark:text-gray-100 leading-tight">
+                                        Selamat datang di TravelVerse
                                     </span>
-                                    <div className="text-6xl text-primary font-bold mb-3">
-                                        Explore the Beauty of Banyuwangi
+                                    <div className="text-6xl text-primary font-bold mb-3 leading-tight">
+                                        Jelajahi Keindahan Kota Banyuwangi
                                     </div>
-                                    <p className="mt-0 mb-4 text-700 line-height-3">
-                                        Travelverse is an Interactive Virtual
-                                        Tour platform that allows you to explore
-                                        various tourist destinations in
-                                        Banyuwangi through 360° Virtual Reality
-                                        (VR) from the comfort of your home.
-                                        Enjoy an immersive experience as if you
-                                        were actually there!.
+                                    <p className="mt-0 mb-4 text-700 line-height-3 text-gray-700 dark:text-gray-300 leading-relaxed">
+                                        Travelverse adalah platform Tur Virtual Interaktif yang memungkinkan Anda menjelajahi berbagai destinasi wisata di Banyuwangi melalui Realitas Virtual (VR) 360° dari rumah Anda. Nikmati pengalaman yang mendalam seolah-olah Anda benar-benar berada di sana!.
                                     </p>
 
                                     <Button
-                                        label="Learn More"
+                                        label="pelajari lebih lanjut"
                                         type="button"
                                         className="mr-3 p-button-raised"
                                         onClick={() =>
@@ -93,7 +76,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                         }
                                     />
                                     <Button
-                                        label="Explore Now"
+                                        label="Jelajahi Sekarang"
                                         type="button"
                                         className="p-button-outlined"
                                         onClick={() =>
@@ -106,9 +89,8 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                 </section>
                             </div>
                             <div
-                                className="col-12 md:col-6 p-0 m-0 h-screen bg-cover bg-center fixed top-0 right-0"
+                                className="flex-1 p-0 m-0 bg-cover bg-center"
                                 style={{
-                                    width: "50%",
                                     backgroundImage:
                                         "url('/images/hero/ijen.jpg')",
                                 }}

@@ -5,7 +5,7 @@ import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
-import "primereact/resources/themes/saga-blue/theme.css";
+
 
 import "../css/layout.css";
 
@@ -24,17 +24,17 @@ createInertiaApp({
             `./Pages/${name}.jsx`,
             import.meta.glob("./Pages/**/*.jsx")
         ),
-    setup({ el, App, props }) {
-        const root = createRoot(el);
+        setup({ el, App, props }) {
+            const root = createRoot(el);
 
-        root.render(
-            <PrimeReactProvider>
-                <LayoutProvider>
-                    <App {...props} />
-                </LayoutProvider>
-            </PrimeReactProvider>
-        );
-    },
+            root.render(
+                <PrimeReactProvider>
+                    <LayoutProvider>
+                        <App key={props.initialPage.component} {...props} />
+                    </LayoutProvider>
+                </PrimeReactProvider>
+            );
+        },
     progress: {
         color: "#4B5563",
     },
