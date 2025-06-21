@@ -16,3 +16,10 @@ Route::delete('/wisata/{id}', [WisataController::class, 'destroy'])->name('api.w
 
 Route::post('/chat', [ChatController::class, 'chat'])->name('api.chat');
 
+use App\Http\Controllers\HotelController;
+
+Route::get('/hotels', [HotelController::class, 'index'])->name('api.hotels.index');
+Route::post('/hotels', [HotelController::class, 'store'])->name('api.hotels.store');
+Route::put('/hotels/{id}', [HotelController::class, 'update'])->name('api.hotels.update');
+Route::delete('/hotels/{id}', [HotelController::class, 'destroy'])->name('api.hotels.destroy');
+Route::apiResource('hotels', HotelController::class);
