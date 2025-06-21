@@ -7,16 +7,14 @@ import { Dialog } from "primereact/dialog";
 import Layout from "@/Layouts/layout/layout";
 import axios from "@/lib/axios";
 
-const WisataPage = () => {
-    const [wisataList, setWisataList] = useState([]);
+const HotelPage = () => {
+    const [hotelList, setHotelList] = useState([]);
     const [formData, setFormData] = useState({
         nama: "",
         lokasi: "",
         maps: "",
         gambar: "",
         detail: "",
-        kategori: "",
-        fasilitas: [],
     });
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedImage, setSelectedImage] = useState(null);
@@ -27,34 +25,27 @@ const WisataPage = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetchWisataList();
+        fetchHotelList();
     }, []);
 
-    const fetchWisataList = async () => {
+    const fetchHotelList = async () => {
         try {
             setLoading(true);
-            const response = await axios.get("/api/wisata");
-            setWisataList(response.data.data);
+            const response = await axios.get("/api/hotels");
+            setHotelList(response.data.data);
             setLoading(false);
         } catch (err) {
-            setError("Failed to fetch wisata data");
+            setError("Failed to fetch hotel data");
             setLoading(false);
         }
     };
 
     const handleInputChange = (e) => {
-        const { name, value, type, checked } = e.target;
-        if (type === "checkbox" && name === "fasilitas") {
-            const updatedFasilitas = checked
-                ? [...formData.fasilitas, value]
-                : formData.fasilitas.filter((item) => item !== value);
-            setFormData({ ...formData, fasilitas: updatedFasilitas });
-        } else {
-            setFormData({ ...formData, [name]: value });
-        }
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
     };
 
-    const handleAddWisata = async () => {
+    const handleAddHotel = async () => {
         if (!formData.nama || !formData.lokasi) return;
 
         try {
@@ -68,11 +59,11 @@ const WisataPage = () => {
                     detail: formData.detail,
                 };
                 const response = await axios.put(
-                    `/api/wisata/${editId}`,
+                    `/api/hotels/${editId}`,
                     putData
                 );
-                setWisataList(
-                    wisataList.map((item) =>
+                setHotelList(
+                    hotelList.map((item) =>
                         item.id === editId ? response.data.data : item
                     )
                 );
@@ -84,8 +75,8 @@ const WisataPage = () => {
                     gambar: formData.gambar,
                     detail: formData.detail,
                 };
-                const response = await axios.post("/api/wisata", postData);
-                setWisataList([...wisataList, response.data.data]);
+                const response = await axios.post("/api/hotels", postData);
+                setHotelList([...hotelList, response.data.data]);
             }
             setFormData({
                 nama: "",
@@ -93,14 +84,12 @@ const WisataPage = () => {
                 maps: "",
                 gambar: "",
                 detail: "",
-                kategori: "",
-                fasilitas: [],
             });
             setEditId(null);
             setIsFormVisible(false);
             setLoading(false);
         } catch (err) {
-            setError("Failed to save wisata data");
+            setError("Failed to save hotel data");
             setLoading(false);
         }
     };
@@ -110,11 +99,11 @@ const WisataPage = () => {
 
         try {
             setLoading(true);
-            await axios.delete(`/api/wisata/${id}`);
-            setWisataList(wisataList.filter((item) => item.id !== id));
+            await axios.delete(`/api/hotels/${id}`);
+            setHotelList(hotelList.filter((item) => item.id !== id));
             setLoading(false);
         } catch (err) {
-            setError("Failed to delete wisata data");
+            setError("Failed to delete hotel data");
             setLoading(false);
         }
     };
@@ -157,16 +146,16 @@ const WisataPage = () => {
         <Layout>
             <div className="card">
                 <div className="mb-4">
-                    <h3>Daftar Wisata</h3>
+                    <h3>Daftar Hotel</h3>
                 </div>
                 <div className="flex justify-end mb-4 gap-2">
                     <InputText
-                        placeholder="Cari Wisata..."
+                        placeholder="Cari Hotel..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
                     <Button
-                        label="Tambah Wisata"
+                        label="Tambah Hotel"
                         icon="pi pi-plus"
                         onClick={() => {
                             setFormData({
@@ -175,8 +164,6 @@ const WisataPage = () => {
                                 maps: "",
                                 gambar: "",
                                 detail: "",
-                                kategori: "",
-                                fasilitas: [],
                             });
                             setEditId(null);
                             setIsFormVisible(true);
@@ -185,7 +172,7 @@ const WisataPage = () => {
                 </div>
 
                 <DataTable
-                    value={wisataList.filter((item) =>
+                    value={hotelList.filter((item) =>
                         item.nama
                             .toLowerCase()
                             .includes(searchTerm.toLowerCase())
@@ -201,7 +188,7 @@ const WisataPage = () => {
                             <span>{options.rowIndex + 1}</span>
                         )}
                     />
-                    <Column field="nama" header="Nama Wisata" />
+                    <Column field="nama" header="Nama Hotel" />
                     <Column field="lokasi" header="Lokasi" />
                     <Column
                         field="maps"
@@ -219,14 +206,14 @@ const WisataPage = () => {
             </div>
 
             <Dialog
-                header={editId ? "Edit Wisata" : "Tambah Wisata"}
+                header={editId ? "Edit Hotel" : "Tambah Hotel"}
                 visible={isFormVisible}
                 style={{ width: "50vw" }}
                 modal
                 onHide={() => setIsFormVisible(false)}
             >
                 <div className="p-fluid">
-                    <label>Nama Wisata</label>
+                    <label>Nama Hotel</label>
                     <InputText
                         name="nama"
                         value={formData.nama}
@@ -245,6 +232,7 @@ const WisataPage = () => {
                         name="maps"
                         value={formData.maps}
                         onChange={handleInputChange}
+                        maxLength={255}
                     />
 
                     <label>URL Gambar</label>
@@ -261,59 +249,16 @@ const WisataPage = () => {
                         onChange={handleInputChange}
                     />
 
-                    <label>Kategori</label>
-                    <select
-                        name="kategori"
-                        value={formData.kategori}
-                        onChange={handleInputChange}
-                    >
-                        <option value="">Pilih Kategori</option>
-                        <option value="pantai">Pantai</option>
-                        <option value="gunung">Gunung</option>
-                        <option value="hutan">Hutan</option>
-                        <option value="air terjun">Air Terjun</option>
-                        <option value="taman nasional">Taman Nasional</option>
-                        <option value="situs budaya">Situs Budaya</option>
-                        <option value="fasilitas publik">
-                            Fasilitas Publik
-                        </option>
-                    </select>
-
-                    <label>Fasilitas</label>
-                    <div className="flex flex-wrap gap-2">
-                        {[
-                            "Toilet",
-                            "Parkir",
-                            "Restoran",
-                            "Penginapan",
-                            "Area Bermain",
-                            "WiFi",
-                        ].map((item) => (
-                            <label key={item}>
-                                <input
-                                    type="checkbox"
-                                    name="fasilitas"
-                                    value={item}
-                                    checked={(
-                                        formData.fasilitas || []
-                                    ).includes(item)}
-                                    onChange={handleInputChange}
-                                />{" "}
-                                {item}
-                            </label>
-                        ))}
-                    </div>
-
                     <Button
-                        label={editId ? "Simpan Perubahan" : "Tambah Wisata"}
-                        onClick={handleAddWisata}
+                        label={editId ? "Simpan Perubahan" : "Tambah Hotel"}
+                        onClick={handleAddHotel}
                         className="mt-4"
                     />
                 </div>
             </Dialog>
 
             <Dialog
-                header="Gambar Wisata"
+                header="Gambar Hotel"
                 visible={isDialogVisible}
                 style={{ width: "50vw" }}
                 modal
@@ -332,4 +277,4 @@ const WisataPage = () => {
     );
 };
 
-export default WisataPage;
+export default HotelPage;
