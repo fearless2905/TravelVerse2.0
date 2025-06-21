@@ -13,7 +13,6 @@ export default function Login({ status, canResetPassword }) {
     const { data, setData, post, processing, errors, reset } = useForm({
         email: "",
         password: "",
-        remember: false,
     });
 
     useEffect(() => {
@@ -27,10 +26,6 @@ export default function Login({ status, canResetPassword }) {
 
         post(route("login"));
     };
-
-    function setChecked(checked) {
-        return undefined;
-    }
 
     return (
         <GuestLayout>
@@ -46,7 +41,7 @@ export default function Login({ status, canResetPassword }) {
                 <img
                     src="/images/logo/4.svg"
                     alt="hyper"
-                    height={150}
+                    height={100}
                     className="mb-3"
                 />
                 <div className="surface-card p-6 sm:p-4 shadow-2 border-round w-full lg:w-4">
@@ -112,23 +107,6 @@ export default function Login({ status, canResetPassword }) {
                             </div>
 
                             <div className="flex align-items-center justify-content-between mb-6">
-                                <div className="flex align-items-center">
-                                    <Checkbox
-                                        inputId="rememberme-login"
-                                        onChange={(e) =>
-                                            setData(
-                                                "remember",
-                                                e.target.checked
-                                            )
-                                        }
-                                        checked={data.remember}
-                                        className="mr-2"
-                                    />
-                                    <label htmlFor="rememberme-login">
-                                        Remember me
-                                    </label>
-                                </div>
-
                                 {canResetPassword && (
                                     <Link
                                         href={route("password.request")}
