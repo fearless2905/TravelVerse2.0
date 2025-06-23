@@ -17,7 +17,43 @@ const destinations = [
         category: "Mountain",
         description:
             "Explore scenic mountain trails offering breathtaking views and exciting hiking experiences.",
-        vrPath: "/vr/pantai2/index.html", // Path untuk Mountain
+        vrPath: "/vr/trails/index.html", // Path untuk Mountain
+    },
+    {
+        img: "/images/hero/patung.jpg",
+        title: "Historic Cityscape",
+        desc: "Banyuwangi",
+        category: "City",
+        description:
+            "Discover the rich history and culture of the city through its iconic landmarks and architecture.",
+        vrPath: "/vr/desa adat/index.html", // Path untuk Mountain
+    },
+    {
+        img: "/images/hero/pulaumerah.jpg",
+        title: "Pantai Pulau Merah",
+        desc: "Banyuwangi",
+        category: "Beach",
+        description:
+            "Famous for its red sand and stunning sunsets, this beach is a must-visit for nature lovers.",
+        vrPath: "/vr/pulau merah/index.html", // Path untuk Mountain
+    },
+    {
+        img: "/images/hero/ijen.jpg",
+        title: "Kawah Ijen",
+        desc: "Banyuwangi",
+        category: "Volcano",
+        description:
+            "Witness the mesmerizing blue flames and sulfur mining activities at this active volcano.",
+        vrPath: "/vr/ijen/index.html", // Path untuk Mountain
+    },
+    {
+        img: "/images/hero/banyuwangi1.jpg",
+        title: "Hutan Taman Nasional Baluran",
+        desc: "Banyuwangi",
+        category: "Forest",
+        description:
+            "Experience diverse wildlife and lush greenery in this expansive national park.",
+        vrPath: "/vr/baluran/index.html", // Path untuk Mountain
     },
 ];
 
