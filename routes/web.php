@@ -33,11 +33,21 @@ Route::get('/landing/travelverse-dashboard', function () {
     return Inertia::render('vr/travelverse-dashboard');
 });
 
+Route::get('/landing/hotel-booking', function () {
+    return Inertia::render('Booking/HotelBooking');
+});
+
 Route::get('/dashboard', function () {
     return Inertia::render(component: 'Dashboard');
 })
     ->name('dashboard');
 //    ->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admin', function () {
+        return Inertia::render('Admin/AdminDashboard');
+    })->name('admin.dashboard');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
