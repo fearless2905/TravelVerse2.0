@@ -15,6 +15,7 @@ export default function Register() {
         email: "",
         password: "",
         password_confirmation: "",
+        role: "user",
     });
 
     useEffect(() => {
@@ -137,6 +138,30 @@ export default function Register() {
                                 />
                                 <InputError
                                     message={errors.password_confirmation}
+                                    className=""
+                                />
+                            </div>
+
+                            <div className="mb-3">
+                                <label
+                                    htmlFor="role"
+                                    className="block text-900 font-medium mb-2"
+                                >
+                                    Register as
+                                </label>
+                                <select
+                                    id="role"
+                                    className="w-full p-2 border border-gray-300 rounded"
+                                    value={data.role}
+                                    onChange={(e) =>
+                                        setData("role", e.target.value)
+                                    }
+                                >
+                                    <option value="user">User</option>
+                                    <option value="admin">Admin</option>
+                                </select>
+                                <InputError
+                                    message={errors.role}
                                     className=""
                                 />
                             </div>
