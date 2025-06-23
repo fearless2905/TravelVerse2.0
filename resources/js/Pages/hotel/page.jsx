@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { InputText } from "primereact/inputtext";
+import { InputNumber } from "primereact/inputnumber";
 import { Button } from "primereact/button";
 import { Dialog } from "primereact/dialog";
 import Layout from "@/Layouts/layout/layout";
@@ -15,6 +16,7 @@ const HotelPage = () => {
         maps: "",
         gambar: "",
         detail: "",
+        harga: null,
     });
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedImage, setSelectedImage] = useState(null);
@@ -45,22 +47,19 @@ const HotelPage = () => {
         setFormData({ ...formData, [name]: value });
     };
 
+    const handleHargaChange = (value) => {
+        setFormData({ ...formData, harga: value });
+    };
+
     const handleAddHotel = async () => {
         if (!formData.nama || !formData.lokasi) return;
 
         try {
             setLoading(true);
             if (editId !== null) {
-                const putData = {
-                    nama: formData.nama,
-                    lokasi: formData.lokasi,
-                    maps: formData.maps,
-                    gambar: formData.gambar,
-                    detail: formData.detail,
-                };
                 const response = await axios.put(
                     `/api/hotels/${editId}`,
-                    putData
+                    formData
                 );
                 setHotelList(
                     hotelList.map((item) =>
@@ -68,22 +67,17 @@ const HotelPage = () => {
                     )
                 );
             } else {
-                const postData = {
-                    nama: formData.nama,
-                    lokasi: formData.lokasi,
-                    maps: formData.maps,
-                    gambar: formData.gambar,
-                    detail: formData.detail,
-                };
-                const response = await axios.post("/api/hotels", postData);
+                const response = await axios.post("/api/hotels", formData);
                 setHotelList([...hotelList, response.data.data]);
             }
+
             setFormData({
                 nama: "",
                 lokasi: "",
                 maps: "",
                 gambar: "",
                 detail: "",
+                harga: null,
             });
             setEditId(null);
             setIsFormVisible(false);
@@ -142,6 +136,16 @@ const HotelPage = () => {
         </div>
     );
 
+    const hargaBodyTemplate = (rowData) => {
+        if (rowData.harga === null || rowData.harga === undefined) return "-";
+        const hargaNumber = Number(rowData.harga);
+        if (isNaN(hargaNumber)) return "-";
+        return new Intl.NumberFormat("id-ID", {
+            style: "currency",
+            currency: "IDR",
+        }).format(hargaNumber);
+    };
+
     return (
         <Layout>
             <div className="card">
@@ -164,6 +168,7 @@ const HotelPage = () => {
                                 maps: "",
                                 gambar: "",
                                 detail: "",
+                                harga: "",
                             });
                             setEditId(null);
                             setIsFormVisible(true);
@@ -201,10 +206,16 @@ const HotelPage = () => {
                     />
                     <Column header="Gambar" body={imageBodyTemplate} />
                     <Column field="detail" header="Detail" />
+                    <Column
+                        field="harga"
+                        header="Harga"
+                        body={hargaBodyTemplate}
+                    />
                     <Column header="Aksi" body={actionBodyTemplate} />
                 </DataTable>
             </div>
 
+            {/* Form Dialog */}
             <Dialog
                 header={editId ? "Edit Hotel" : "Tambah Hotel"}
                 visible={isFormVisible}
@@ -249,6 +260,17 @@ const HotelPage = () => {
                         onChange={handleInputChange}
                     />
 
+                    <label>Harga</label>
+                    <InputNumber
+                        name="harga"
+                        value={formData.harga}
+                        onValueChange={(e) => handleHargaChange(e.value)}
+                        mode="currency"
+                        currency="IDR"
+                        locale="id-ID"
+                        className="w-full"
+                    />
+
                     <Button
                         label={editId ? "Simpan Perubahan" : "Tambah Hotel"}
                         onClick={handleAddHotel}
@@ -257,6 +279,7 @@ const HotelPage = () => {
                 </div>
             </Dialog>
 
+            {/* Image Dialog */}
             <Dialog
                 header="Gambar Hotel"
                 visible={isDialogVisible}

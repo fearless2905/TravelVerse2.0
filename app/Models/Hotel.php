@@ -15,5 +15,6 @@ class Hotel extends Model
         'maps',
         'gambar',
         'detail',
+        'harga',
     ];
 }
