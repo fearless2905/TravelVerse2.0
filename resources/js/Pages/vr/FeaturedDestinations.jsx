@@ -44,7 +44,7 @@ const destinations = [
         category: "Volcano",
         description:
             "Witness the mesmerizing blue flames and sulfur mining activities at this active volcano.",
-        vrPath: "#", // Path untuk Mountain
+        vrPath: "/vr/ijen/index.html", // Path untuk Mountain
     },
     {
         img: "/images/hero/banyuwangi1.jpg",
