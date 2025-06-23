@@ -1,5 +1,8 @@
 import { Link, Head, router } from "@inertiajs/react";
-import { LayoutContext, LayoutProvider } from "@/Layouts/layout/context/layoutcontext.jsx";
+import {
+    LayoutContext,
+    LayoutProvider,
+} from "@/Layouts/layout/context/layoutcontext.jsx";
 import { PrimeReactProvider } from "primereact/api";
 import { Button } from "primereact/button";
 import React, { useContext, useEffect } from "react";
@@ -51,9 +54,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                         </div>
 
                         <div className="flex surface-0 text-800 min-h-screen">
-                            <div
-                                className="flex-1 p-6 text-left flex align-items-center justify-start"
-                            >
+                            <div className="flex-1 p-6 text-left flex align-items-center justify-start">
                                 <section>
                                     <span className="block text-6xl font-bold mb-1 text-gray-900 dark:text-gray-100 leading-tight">
                                         Selamat datang di TravelVerse
@@ -62,11 +63,17 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                         Jelajahi Keindahan Kota Banyuwangi
                                     </div>
                                     <p className="mt-0 mb-4 text-700 line-height-3 text-gray-700 dark:text-gray-300 leading-relaxed">
-                                        Travelverse adalah platform Tur Virtual Interaktif yang memungkinkan Anda menjelajahi berbagai destinasi wisata di Banyuwangi melalui Realitas Virtual (VR) 360° dari rumah Anda. Nikmati pengalaman yang mendalam seolah-olah Anda benar-benar berada di sana!.
+                                        Travelverse adalah platform Tur Virtual
+                                        Interaktif yang memungkinkan Anda
+                                        menjelajahi berbagai destinasi wisata di
+                                        Banyuwangi melalui Realitas Virtual (VR)
+                                        360° dari rumah Anda. Nikmati pengalaman
+                                        yang mendalam seolah-olah Anda
+                                        benar-benar berada di sana!.
                                     </p>
 
                                     <Button
-                                        label="pelajari lebih lanjut"
+                                        label="Pelajari lebih lanjut"
                                         type="button"
                                         className="mr-3 p-button-raised"
                                         onClick={() =>
