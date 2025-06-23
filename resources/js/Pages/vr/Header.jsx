@@ -3,7 +3,7 @@ import React from "react";
 const Header = () => (
     <header className="w-full py-6 px-4 md:px-10 flex items-center justify-between">
         <div className="flex gap-4 items-center">
-            <a href="index.html" className="text-2xl font-bold tracking-wide">
+            <a href="/landing" className="text-2xl font-bold tracking-wide">
                 TravelVerse
             </a>
         </div>

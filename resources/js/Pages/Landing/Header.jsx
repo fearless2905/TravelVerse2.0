@@ -5,10 +5,10 @@ export default function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
 
     const menuItems = [
-        { href: "/", label: "Home" },
-        { href: "/booking", label: "Booking" },
+        { href: "/landing", label: "Home" },
+        { href: "/landing/travelverse-dashboard", label: "Booking" },
         { href: "/about", label: "About Us" },
-        { href: "/travelverse-dashboard", label: "Virtual Tour" },
+        { href: "/landing/travelverse-dashboard", label: "Virtual Tour" },
         { href: "/login", label: "Login" },
         { href: "/blog", label: "Blog" },
         { href: "/contact", label: "Contact" },
