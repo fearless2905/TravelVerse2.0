@@ -35,7 +35,7 @@ const destinations = [
         category: "Beach",
         description:
             "Famous for its red sand and stunning sunsets, this beach is a must-visit for nature lovers.",
-        vrPath: "#", // Path untuk Mountain
+        vrPath: "/vr/pulau merah/index.html", // Path untuk Mountain
     },
     {
         img: "/images/hero/ijen.jpg",
@@ -53,7 +53,7 @@ const destinations = [
         category: "Forest",
         description:
             "Experience diverse wildlife and lush greenery in this expansive national park.",
-        vrPath: "#", // Path untuk Mountain
+        vrPath: "/vr/baluran/index.html", // Path untuk Mountain
     },
 ];
 
