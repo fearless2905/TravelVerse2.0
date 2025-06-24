@@ -4,6 +4,7 @@ import "./vr-tailwind.css";
 import Header from "./Header";
 // import HeroSection from "./HeroSection";
 import FeaturedDestinations from "./FeaturedDestinations";
+import CheckoutPage from "./checkout";
 import AllTours from "./AllTours";
 import MapLocations from "./MapLocations";
 import Categories from "./Categories";
@@ -33,5 +34,6 @@ const TravelverseDashboard = () => {
         </div>
     );
 };
+
 
 export default TravelverseDashboard;
