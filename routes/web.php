@@ -77,7 +77,9 @@ Route::get('/hotel', function () {
 
 Route::post('/hotel', [WisataController::class, 'store'])->name('hotel.store');
 
-
+Route::get('/booking/{hotelId}', function ($hotelId) {
+    return Inertia::render('vr/CheckoutPage', ['hotelId' => $hotelId]);
+});
 
 
 require __DIR__.'/auth.php';
